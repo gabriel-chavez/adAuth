@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text;
 using System.Collections;
-using System.Web.Security;
-using System.DirectoryServices.AccountManagement;
+//using System.Web.Security;
+//using System.DirectoryServices.AccountManagement;
 using System.Security.Principal;
 using System.DirectoryServices;
 
