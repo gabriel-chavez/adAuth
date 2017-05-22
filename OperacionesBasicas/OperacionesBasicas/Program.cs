@@ -8,12 +8,12 @@ namespace OperacionesBasicas
         {
                 var servicioAd = new ServicioActiveDirectory();
 
-                servicioAd.ObtenerInformacionUsuario("testig");
-                servicioAd.Autenticar("testig","testig1");
+               servicioAd.ObtenerInformacionUsuario("gauss");
+               // servicioAd.Autenticar("newton","password");
 
-                servicioAd.CambiarContrasena("testig", "tetsig1", "nuevoTest");
+               // servicioAd.CambiarContrasena("testig", "tetsig1", "nuevoTest");
 
-                servicioAd.ResetearContrasena("testig", "nuevoTest");
+              //  servicioAd.ResetearContrasena("testig", "nuevoTest");
         }
     }
 }
