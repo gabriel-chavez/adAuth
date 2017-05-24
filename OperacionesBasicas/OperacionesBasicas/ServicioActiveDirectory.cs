@@ -10,11 +10,12 @@ namespace OperacionesBasicas
             var tipoAutenticacion =
                 AuthenticationTypes.None | AuthenticationTypes.FastBind;
 
-            var identificador =
-                string.Format("uid={0},dc=example,dc=com", usuario);
+            var identificador = usuario;
+               // string.Format("sAMAccountName={0},DC=bsol,DC=com,DC=bo", usuario);
             /*//ldap.forumsys.com:389/uid=newton,dc=example,dc=com*/
             using (var entry =
-                new DirectoryEntry("LDAP://ldap.forumsys.com:389/dc=example,dc=com",
+                //new DirectoryEntry("LDAP://ldap.forumsys.com:389/dc=example,dc=com",
+                new DirectoryEntry("LDAP://10.9.0.12:389/DC=bsol,DC=com,DC=bo",
                     identificador,
                     contrasena,
                     tipoAutenticacion))
@@ -35,7 +36,27 @@ namespace OperacionesBasicas
                 Console.Read();
             }
         }
+        public  bool IsAuthenticated(string ldap, string usr, string pwd)
+        {
+            bool authenticated = false;
 
+            try
+            {
+                DirectoryEntry entry = new DirectoryEntry(ldap, usr, pwd);
+                object nativeObject = entry.NativeObject;
+                authenticated = true;
+              
+            }
+            catch (DirectoryServicesCOMException cex)
+            {
+                Console.WriteLine(cex);
+            }
+            catch (Exception ex)
+            {
+               // Console.WriteLine(ex);
+            }
+            return authenticated;
+        }
         public void CambiarContrasena(string usuario, string contrasenaAntigua, string contrasenaNueva)
         {
             var dn =
